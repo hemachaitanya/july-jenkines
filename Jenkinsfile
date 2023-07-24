@@ -1,5 +1,10 @@
 pipeline {
-    agent any
+    agent { label 'EEE'}
+    triggers {
+        pollSCM('* * * * *')
+        tools {
+        jdk 'JDK_17'
+    }
      stages {
         stage('vcs'){
             steps {
@@ -9,7 +14,7 @@ pipeline {
         }
         stage ('build'){
             steps {
-                sh 'cd spring-petclinic && mvn clean install'
+                sh 'mvn clean install'
             }
         }
     }
