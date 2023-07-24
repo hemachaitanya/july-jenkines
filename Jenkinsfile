@@ -2,7 +2,8 @@ pipeline {
     agent { label 'EEE'}
     triggers {
         pollSCM('* * * * *')
-        tools {
+    }
+    tools {
         jdk 'JDK_17'
     }
      stages {
@@ -19,5 +20,5 @@ pipeline {
         }
     }   
 }
-}
+
    
