@@ -18,6 +18,13 @@ pipeline {
                 sh 'mvn clean install'
             }
         }
+         stage('report') {
+            steps {
+                junit testResults: '**/surefire-reports/TEST-*.xml'
+                archiveArtifacts artifacts: '**/target/*.jar'
+            }
+
+        }
     }   
 }
 
