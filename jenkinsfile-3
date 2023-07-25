@@ -5,6 +5,7 @@ pipeline {
     }
     tools{
         jdk 'JDK_17'
+        maven 'MAVEN-3.9'
     }
      stages {
         stage('vcs'){
