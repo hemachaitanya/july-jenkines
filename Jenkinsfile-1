@@ -1,5 +1,8 @@
 pipeline{
     agent{ label 'EEE'}
+    tools {
+        jdk 'JDK_8'
+    }
     stages{
         stage ('vcs'){
             steps {
