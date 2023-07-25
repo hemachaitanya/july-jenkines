@@ -13,18 +13,13 @@ pipeline {
                     branch: 'main'
             }
         }
-        stage(build){
-            steps{
-                sh 'mvn clean package'
-            }   
-        }
        stage('sonarqube'){
-        steps{
-             withSonarQubeEnv('My SonarQube Server') {
+            steps{
+             withSonarQubeEnv('SONAR-CLOUD') {
                 sh 'mvn clean package sonar:sonar'
+                }
             }
         }
-       }
     }
 }
 
