@@ -3,6 +3,9 @@ pipeline {
     triggers {
         pollSCM('* * * * *')
     }
+    tools{
+        jdk 'JDK_17'
+    }
      stages {
         stage('vcs'){
             steps {
