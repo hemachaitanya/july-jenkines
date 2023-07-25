@@ -10,10 +10,11 @@ pipeline{
                     branch: 'master'
             }
         }
-        stage('build'){
+        stage ('static && build'){
             steps{
-                sh 'java -version'
-                sh 'mvn clean package'
+                withSonarQubeEnv('SONAR_CLOUD'){
+                    sh 'mvn clean package sonar:sonar'
+                }
             }
         }
     }
