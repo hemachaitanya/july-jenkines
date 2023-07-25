@@ -12,9 +12,12 @@ pipeline{
         }
         stage ('static && build'){
             steps{
-                withSonarQubeEnv('SONAR_CLOUD'){
-                    sh 'mvn clean package sonar:sonar'
-                }
+                sh 'mvn clean package'
+            }
+        }
+        stage('sonar'){
+            steps {
+                sh 'mvn verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar -Dsonar.projectKey=version-code-analysi_hemachaitanya'
             }
         }
     }
