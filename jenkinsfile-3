@@ -18,7 +18,7 @@ pipeline {
             steps{
                 sh 'mvn --version'
              withSonarQubeEnv('SONAR_CLOUD') {
-                sh 'mvn clean package sonar:sonar'
+                sh 'mvn clean package sonar:sonar -Dsonar.token=714fe94a5e5f7b706b09aca438df7012ea340de6 -Dsonar.projectKey=hemachaitanya'
                 }
             }
         }
