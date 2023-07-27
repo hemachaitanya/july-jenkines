@@ -1,0 +1,22 @@
+pipeline {
+    agent {label 'RRR'}
+    tools {
+        jdk 'JDK-17'
+        maven 'MAVEN-3.9'
+    }
+    stages{
+        stage('git-vcs'){
+            steps{
+                 git url: 'https://github.com/hemachaitanya/spring-petclinic.git',
+                branch: 'main'
+            }           
+        }
+        stage('sonar-qube and build'){
+            steps{
+                withSonarQubeEnv('SONAR_CLOUD') {
+                sh 'mvn clean package sonar:sonar -Dsonar.organization=sohail -Dsonar.token=714fe94a5e5f7b706b09aca438df7012ea340de6 -Dsonar.projectKey=sohail'
+                }
+            }
+        }
+    }
+}

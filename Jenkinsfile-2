@@ -1,7 +1,7 @@
 pipeline{
-    agent{ label 'EEE'}
+    agent{ label 'RRR'}
     tools {
-        jdk 'JDK_8'
+        jdk 'JDK-17'
     }
     stages{
         stage ('vcs'){
