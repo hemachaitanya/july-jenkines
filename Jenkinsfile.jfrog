@@ -1,0 +1,18 @@
+pipeline{
+    agent{ label 'EEE'}
+    tools{
+        jdk 'JDK-17'
+        maven 'MVN-3.9'
+    }
+    stages {
+        stage ('git clone'){
+            steps{
+                git url: 'https://github.com/spring-projects/spring-petclinic.git',
+                    branch: 'main'
+            }
+        }
+        stage ('jfrog') {
+            
+        }
+    }
+}
